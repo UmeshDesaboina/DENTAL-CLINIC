@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shine Superspeciality Dental Clinic | Premium Dental Care in Hyderabad</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================= ROOT & BASE ================= */
+:root{
+  --primary: #0a3a8e;
+  --secondary: #f0f7ff;
+  --accent: #f2b61b;
+  --dark: #0d1628;
+  --muted: #5c6b81;
+  --white: #ffffff;
+  --gradient: linear-gradient(135deg, var(--primary) 0%, #1f5cd8 100%);
+  --shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:#fafcff;
+  color:var(--dark);
+  line-height:1.7;
+}
+/* ================= HEADER ================= */
+header{
+  background: var(--gradient);
+  color:var(--white);
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  box-shadow:var(--shadow);
+  transition: background 0.3s;
+}
+.navbar{
+  max-width:1400px;
+  margin:auto;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:26px;
+  font-weight:700;
+  letter-spacing:1.2px;
+}
+.nav-links{
+  list-style:none;
+  display:flex;
+}
+.nav-links li{
+  margin-left:35px;
+}
+.nav-links a{
+  color:var(--white);
+  text-decoration:none;
+  font-weight:600;
+  transition: color 0.3s, transform 0.3s;
+}
+.nav-links a:hover{
+  color:var(--accent);
+  transform: scale(1.05);
+}
+/* Hamburger */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+.hamburger span{
+  height:3px;
+  width:30px;
+  background:var(--white);
+  margin-bottom:5px;
+  transition: 0.3s;
+}
+/* Mobile Menu */
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:var(--primary);
+    padding:30px 0;
+  }
+  .nav-links.active{display:flex;}
+  .nav-links li{margin:25px 0;text-align:center;}
+  .hamburger{display:flex;}
+}
+/* ================= HERO ================= */
+#home{
+  height:100vh;
+  background:
+    linear-gradient(rgba(10,58,142,.7), rgba(10,58,142,.7)),
+    url("https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1920&q=80");
+  background-size:cover;
+  background-position:center;
+  color:white;
+  display:flex;
+  align-items:center;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+}
+.hero-content{
+  max-width:1400px;
+  padding:0 30px;
+  margin:auto;
+  z-index:1;
+}
+#home h1{
+  font-size:58px;
+  max-width:800px;
+  margin-bottom:25px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+#home p{
+  font-size:22px;
+  max-width:700px;
+  margin-bottom:40px;
+}
+.btn{
+  display:inline-block;
+  padding:18px 42px;
+  border-radius:50px;
+  font-weight:700;
+  text-decoration:none;
+  transition: all 0.4s;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+}
+.btn-primary{
+  background:var(--accent);
+  color:var(--dark);
+}
+.btn-primary:hover{
+  transform: translateY(-5px);
+  box-shadow:0 12px 35px rgba(242,182,27,0.5);
+}
+.btn-outline{
+  border:2px solid white;
+  color:white;
+  margin-left:25px;
+}
+.btn-outline:hover{
+  background:white;
+  color:var(--primary);
+  transform: translateY(-5px);
+}
+/* ================= SECTIONS ================= */
+section{
+  max-width:1400px;
+  margin:auto;
+  padding:140px 30px;
+}
+.section-title{
+  text-align:center;
+  margin-bottom:80px;
+}
+.section-title h2{
+  font-size:46px;
+  color:var(--primary);
+  position:relative;
+}
+.section-title h2::after{
+  content:'';
+  display:block;
+  width:100px;
+  height:5px;
+  background:var(--accent);
+  margin:25px auto 0;
+  border-radius:2.5px;
+}
+/* ================= TRUST ================= */
+.trust{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:50px;
+}
+.trust-box{
+  background:white;
+  padding:45px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.trust-box:hover{
+  transform: translateY(-10px);
+  box-shadow:0 25px 50px rgba(0,0,0,0.2);
+}
+.trust-box i {
+  font-size:40px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+/* ================= SERVICES ================= */
+#services{background:var(--secondary);}
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+}
+.service-item{
+  background:white;
+  padding:50px 40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  transition:.4s;
+  text-align:center;
+}
+.service-item:hover{
+  transform:translateY(-15px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+.service-item h3{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:26px;
+}
+/* ================= PROCESS ================= */
+#process{
+  background:var(--secondary);
+}
+.timeline{
+  border-left:6px solid var(--primary);
+  padding-left:50px;
+}
+.step{
+  margin-bottom:60px;
+  position:relative;
+  padding:30px;
+  background:white;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+.step::before{
+  content:"";
+  position:absolute;
+  left:-58px;
+  top:20px;
+  width:28px;
+  height:28px;
+  background:var(--accent);
+  border-radius:50%;
+  border:5px solid white;
+}
+.step h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+/* ================= TEAM ================= */
+#team {
+  background:white;
+}
+.team-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:50px;
+}
+.team-member {
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  text-align:center;
+  transition: transform 0.4s;
+}
+.team-member:hover {
+  transform: translateY(-10px);
+}
+.team-member img {
+  width:100%;
+  height:350px;
+  object-fit:cover;
+}
+.team-info {
+  padding:30px;
+}
+.team-info h3 {
+  color:var(--primary);
+  margin-bottom:10px;
+}
+.team-info p {
+  color:var(--muted);
+}
+/* ================= TESTIMONIALS ================= */
+#testimonials{
+  background:var(--gradient);
+  color:white;
+}
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:50px;
+}
+.testimonial-item{
+  background:rgba(255,255,255,0.15);
+  padding:45px;
+  border-radius:30px;
+  backdrop-filter: blur(15px);
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+.testimonial-item p{
+  font-style:italic;
+  margin-bottom:25px;
+  font-size:18px;
+}
+.testimonial-item cite{
+  display:block;
+  font-weight:600;
+  font-size:16px;
+}
+/* ================= GALLERY ================= */
+#gallery{
+  background:var(--secondary);
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:40px;
+}
+.gallery img{
+  width:100%;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  transition: transform 0.4s;
+}
+.gallery img:hover{
+  transform: scale(1.08);
+}
+/* ================= FAQ ================= */
+#faq {
+  background:white;
+}
+.faq-item {
+  margin-bottom:30px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.faq-question {
+  background:var(--secondary);
+  padding:25px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+  color:var(--primary);
+}
+.faq-answer {
+  padding:25px;
+  display:none;
+  background:white;
+}
+.faq-item.active .faq-answer {
+  display:block;
+}
+/* ================= CONTACT ================= */
+#contact{
+  background:var(--secondary);
+}
+.contact-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+}
+form{
+  display:flex;
+  flex-direction:column;
+  background:white;
+  padding:50px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+}
+input,textarea{
+  width:100%;
+  padding:20px;
+  margin-bottom:25px;
+  border-radius:15px;
+  border:1px solid #d1dbe9;
+  font-size:16px;
+  transition: border 0.3s;
+}
+input:focus, textarea:focus {
+  border-color:var(--accent);
+  outline:none;
+}
+button{
+  width:100%;
+  padding:20px;
+  border:none;
+  border-radius:50px;
+  background:var(--gradient);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition: all 0.4s;
+}
+button:hover{
+  transform: translateY(-5px);
+  box-shadow:0 12px 35px rgba(10,58,142,0.4);
+}
+.map{
+  height:500px;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+@media(max-width:900px){
+  .contact-container{
+    grid-template-columns:1fr;
+  }
+  .map{
+    height:400px;
+    margin-top:50px;
+  }
+}
+/* ================= FOOTER ================= */
+footer{
+  background:var(--dark);
+  color:white;
+  padding:60px 30px 30px;
+}
+.footer-content {
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:50px;
+  text-align:left;
+}
+.footer-content h3 {
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.footer-content ul {
+  list-style:none;
+}
+.footer-content ul li {
+  margin-bottom:10px;
+}
+.footer-content a {
+  color:white;
+  text-decoration:none;
+  transition: color 0.3s;
+}
+.footer-content a:hover {
+  color:var(--accent);
+}
+.social-links {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin:40px 0;
+}
+.social-links a {
+  color:white;
+  font-size:30px;
+  transition: transform 0.3s;
+}
+.social-links a:hover {
+  transform: translateY(-8px);
+  color:var(--accent);
+}
+/* ================= FLOATING ICONS ================= */
+.floating-icons {
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:999;
+}
+.floating-icons a {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  font-size:28px;
+  transition: transform 0.4s;
+}
+.floating-icons a:hover {
+  transform: scale(1.15);
+}
+.floating-icons .whatsapp {
+  background:#25D366;
+  color:white;
+}
+.floating-icons .phone {
+  background:var(--accent);
+  color:var(--dark);
+}
+/* ================= BACK TO TOP ================= */
+.back-to-top {
+  position:fixed;
+  bottom:120px;
+  right:30px;
+  width:50px;
+  height:50px;
+  background:var(--primary);
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  font-size:24px;
+  opacity:0;
+  visibility:hidden;
+  transition: all 0.4s;
+  z-index:998;
+}
+.back-to-top.visible {
+  opacity:1;
+  visibility:visible;
+}
+/* ================= NEW: AWARDS SECTION ================= */
+#awards {
+  background:var(--secondary);
+}
+.awards-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+}
+.award-item {
+  background:white;
+  padding:40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  transition:.4s;
+}
+.award-item:hover {
+  transform:translateY(-15px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+.award-item i {
+  font-size:50px;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.award-item h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+/* ================= NEW: BLOG SECTION ================= */
+#blog {
+  background:white;
+}
+.blog-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:50px;
+}
+.blog-post {
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition: transform 0.4s;
+}
+.blog-post:hover {
+  transform: translateY(-10px);
+}
+.blog-post img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+.blog-info {
+  padding:30px;
+}
+.blog-info h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+.blog-info p {
+  margin-bottom:20px;
+}
+.blog-info a {
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+}
+/* ================= NEW: FACILITIES SECTION ================= */
+#facilities {
+  background:var(--secondary);
+}
+.facilities-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+}
+.facility-item {
+  background:white;
+  padding:50px 40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  transition:.4s;
+  text-align:center;
+}
+.facility-item:hover {
+  transform:translateY(-15px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+.facility-item i {
+  font-size:50px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.facility-item h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+/* ================= NEW: NEWSLETTER FORM ================= */
+#newsletter {
+  background:var(--gradient);
+  color:white;
+  text-align:center;
+  padding:80px 30px;
+}
+#newsletter h2 {
+  font-size:40px;
+  margin-bottom:20px;
+}
+#newsletter p {
+  font-size:18px;
+  margin-bottom:40px;
+}
+.newsletter-form {
+  max-width:600px;
+  margin:0 auto;
+  display:flex;
+}
+.newsletter-form input {
+  flex:1;
+  padding:20px;
+  border:none;
+  border-radius:50px 0 0 50px;
+  font-size:16px;
+}
+.newsletter-form button {
+  padding:20px 40px;
+  border:none;
+  border-radius:0 50px 50px 0;
+  background:var(--accent);
+  color:var(--dark);
+  font-weight:700;
+  cursor:pointer;
+  transition: background 0.3s;
+}
+.newsletter-form button:hover {
+  background:var(--white);
+  color:var(--primary);
+}
+/* ================= FOOTER ================= */
+footer{
+  background:var(--dark);
+  color:white;
+  padding:60px 30px 30px;
+}
+.footer-content {
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:50px;
+  text-align:left;
+}
+.footer-content h3 {
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.footer-content ul {
+  list-style:none;
+}
+.footer-content ul li {
+  margin-bottom:10px;
+}
+.footer-content a {
+  color:white;
+  text-decoration:none;
+  transition: color 0.3s;
+}
+.footer-content a:hover {
+  color:var(--accent);
+}
+.social-links {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin:40px 0;
+}
+.social-links a {
+  color:white;
+  font-size:30px;
+  transition: transform 0.3s;
+}
+.social-links a:hover {
+  transform: translateY(-8px);
+  color:var(--accent);
+}
+/* ================= FLOATING ICONS ================= */
+.floating-icons {
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:999;
+}
+.floating-icons a {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  font-size:28px;
+  transition: transform 0.4s;
+}
+.floating-icons a:hover {
+  transform: scale(1.15);
+}
+.floating-icons .whatsapp {
+  background:#25D366;
+  color:white;
+}
+.floating-icons .phone {
+  background:var(--accent);
+  color:var(--dark);
+}
+/* ================= BACK TO TOP ================= */
+.back-to-top {
+  position:fixed;
+  bottom:120px;
+  right:30px;
+  width:50px;
+  height:50px;
+  background:var(--primary);
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  font-size:24px;
+  opacity:0;
+  visibility:hidden;
+  transition: all 0.4s;
+  z-index:998;
+}
+.back-to-top.visible {
+  opacity:1;
+  visibility:visible;
+}
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+section > * {
+  animation: fadeInUp 1.2s ease-out;
+}
+</style>
+</head>
+<body>
+<header>
+<nav class="navbar">
+<div class="logo">Shine Superspeciality Dental Clinic</div>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#awards">Awards</a></li>
+<li><a href="#facilities">Facilities</a></li>
+<li><a href="#blog">Blog</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#newsletter">Newsletter</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</div>
+</nav>
+</header>
+
+<section id="home">
+<div class="hero-content">
+<h1>Elite Superspeciality Dental Care for Timeless Smiles</h1>
+<p>Discover unparalleled dental excellence with innovative technology, expert specialists, and luxurious patient experience in Hyderabad.</p>
+<a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+<a href="tel:+919876543210" class="btn btn-outline">Contact Us</a>
+</div>
+</section>
+
+<section id="about">
+<div class="section-title"><h2>Why Shine Stands Out</h2></div>
+<div class="trust">
+<div class="trust-box"><i class="fas fa-user-md"></i><br>World-Class Specialists</div>
+<div class="trust-box"><i class="fas fa-tools"></i><br>Cutting-Edge Technology</div>
+<div class="trust-box"><i class="fas fa-shield-alt"></i><br>Impeccable Hygiene Standards</div>
+<div class="trust-box"><i class="fas fa-heart"></i><br>Luxury Patient Experience</div>
+</div>
+</section>
+
+<section id="services">
+<div class="section-title"><h2>Our Elite Specialities</h2></div>
+<div class="service-grid">
+<div class="service-item"><h3>Dental Implants</h3><p>Premium titanium implants for natural-looking, durable tooth replacement.</p></div>
+<div class="service-item"><h3>Cosmetic Dentistry</h3><p>Hollywood-level smile designs, porcelain veneers, and laser whitening.</p></div>
+<div class="service-item"><h3>Root Canal Therapy</h3><p>Advanced microscopic endodontics for painless, precise treatments.</p></div>
+<div class="service-item"><h3>Orthodontics</h3><p>Custom invisible aligners and ceramic braces for discreet correction.</p></div>
+<div class="service-item"><h3>Oral Surgery</h3><p>Minimally invasive procedures with 3D-guided precision.</p></div>
+<div class="service-item"><h3>Pediatric Dentistry</h3><p>Child-friendly care with sedation options for stress-free visits.</p></div>
+</div>
+</section>
+
+<section id="process">
+<div class="section-title"><h2>Your Premium Journey</h2></div>
+<div class="timeline">
+<div class="step"><h3>Elite Consultation</h3><p>In-depth assessment with digital scanning and personalized planning.</p></div>
+<div class="step"><h3>Advanced Diagnostics</h3><p>AI-assisted 3D imaging for unparalleled accuracy.</p></div>
+<div class="step"><h3>Luxury Treatment</h3><p>Spa-like environment with painless, high-precision procedures.</p></div>
+<div class="step"><h3>VIP Aftercare</h3><p>Concierge follow-up and lifetime smile maintenance.</p></div>
+</div>
+</section>
+
+<section id="team">
+<div class="section-title"><h2>Our Expert Team</h2></div>
+<div class="team-grid">
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1559839749-2b71ea197ec8?auto=format&fit=crop&w=800&q=80" alt="Dr. John Doe">
+<div class="team-info">
+<h3>Dr. John Doe</h3>
+<p>Chief Dental Surgeon, 20+ Years Experience</p>
+</div>
+</div>
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1629909613654-28e8ab3bb1c4?auto=format&fit=crop&w=800&q=80" alt="Dr. Jane Smith">
+<div class="team-info">
+<h3>Dr. Jane Smith</h3>
+<p>Cosmetic Specialist, International Certified</p>
+</div>
+</div>
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16c?auto=format&fit=crop&w=800&q=80" alt="Dr. Mike Johnson">
+<div class="team-info">
+<h3>Dr. Mike Johnson</h3>
+<p>Orthodontist, Award-Winning Expert</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<div class="section-title"><h2>Client Experiences</h2></div>
+<div class="testimonial-grid">
+<div class="testimonial-item"><p>"Transformative experience! The premium care and results exceeded all expectations."</p><cite>- Sophia L.</cite></div>
+<div class="testimonial-item"><p>"Luxurious clinic with top-notch professionals. My new smile is priceless."</p><cite>- David M.</cite></div>
+<div class="testimonial-item"><p>"Elite service from start to finish. Highly recommend for premium dental care."</p><cite>- Emma T.</cite></div>
+<div class="testimonial-item"><p>"Pain-free and sophisticated. Shine is the gold standard in Hyderabad."</p><cite>- Alexander K.</cite></div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="section-title"><h2>Our Luxurious Clinic</h2></div>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Elegant Interior">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80" alt="Advanced Tech">
+<img src="https://images.unsplash.com/photo-1537368910025-700c7d4a7c0e?auto=format&fit=crop&w=800&q=80" alt="Patient Lounge">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Treatment Suite">
+<img src="https://images.unsplash.com/photo-1606813904477-603150e35b85?auto=format&fit=crop&w=800&q=80" alt="Team Collaboration">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Reception Area">
+</div>
+</section>
+
+<section id="awards">
+<div class="section-title"><h2>Awards & Certifications</h2></div>
+<div class="awards-grid">
+<div class="award-item">
+<i class="fas fa-trophy"></i>
+<h3>Best Dental Clinic 2025</h3>
+<p>Awarded by Hyderabad Health Association for excellence in patient care.</p>
+</div>
+<div class="award-item">
+<i class="fas fa-certificate"></i>
+<h3>ISO Certified</h3>
+<p>Certified for quality management in dental services.</p>
+</div>
+<div class="award-item">
+<i class="fas fa-medal"></i>
+<h3>Top Innovator in Dentistry</h3>
+<p>Recognized for using cutting-edge technology in treatments.</p>
+</div>
+</div>
+</section>
+
+<section id="facilities">
+<div class="section-title"><h2>Our State-of-the-Art Facilities</h2></div>
+<div class="facilities-grid">
+<div class="facility-item">
+<i class="fas fa-microscope"></i>
+<h3>Advanced Diagnostics Lab</h3>
+<p>Equipped with 3D imaging and AI-assisted diagnostics for precise treatment planning.</p>
+</div>
+<div class="facility-item">
+<i class="fas fa-hospital"></i>
+<h3>Sterile Treatment Rooms</h3>
+<p>Modern, hygienic rooms with the latest dental equipment for comfortable procedures.</p>
+</div>
+<div class="facility-item">
+<i class="fas fa-chair"></i>
+<h3>Luxury Waiting Lounge</h3>
+<p>Relax in our premium lounge with complimentary beverages and Wi-Fi.</p>
+</div>
+<div class="facility-item">
+<i class="fas fa-child"></i>
+<h3>Child-Friendly Zone</h3>
+<p>Dedicated area for kids with games and entertainment to make visits fun.</p>
+</div>
+</div>
+</section>
+
+<section id="blog">
+<div class="section-title"><h2>Our Dental Blog</h2></div>
+<div class="blog-grid">
+<div class="blog-post">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Blog Post 1">
+<div class="blog-info">
+<h3>Top Tips for Maintaining Oral Health</h3>
+<p>Learn simple daily habits to keep your smile bright and healthy.</p>
+<a href="#">Read More</a>
+</div>
+</div>
+<div class="blog-post">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80" alt="Blog Post 2">
+<div class="blog-info">
+<h3>Understanding Dental Implants</h3>
+<p>A comprehensive guide to what dental implants are and how they work.</p>
+<a href="#">Read More</a>
+</div>
+</div>
+<div class="blog-post">
+<img src="https://images.unsplash.com/photo-1537368910025-700c7d4a7c0e?auto=format&fit=crop&w=800&q=80" alt="Blog Post 3">
+<div class="blog-info">
+<h3>The Benefits of Cosmetic Dentistry</h3>
+<p>Discover how cosmetic treatments can boost your confidence.</p>
+<a href="#">Read More</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="section-title"><h2>Frequently Asked Questions</h2></div>
+<div class="faq-item">
+<div class="faq-question">What makes Shine premium? <i class="fas fa-chevron-down"></i></div>
+<div class="faq-answer">We offer luxury amenities, cutting-edge tech, and personalized VIP care.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">How long do treatments take? <i class="fas fa-chevron-down"></i></div>
+<div class="faq-answer">Varies by procedure; consultations provide exact timelines.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Is financing available? <i class="fas fa-chevron-down"></i></div>
+<div class="faq-answer">Yes, flexible payment plans and insurance partnerships.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What about emergencies? <i class="fas fa-chevron-down"></i></div>
+<div class="faq-answer">24/7 priority access for our patients.</div>
+</div>
+</section>
+
+<section id="newsletter">
+<h2>Subscribe to Our Newsletter</h2>
+<p>Stay updated with the latest dental tips, offers, and clinic news.</p>
+<form class="newsletter-form" id="newsletterForm">
+<input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+<button type="submit">Subscribe</button>
+</form>
+</section>
+
+<section id="contact">
+<div class="section-title"><h2>Contact & Visit Us</h2></div>
+<div class="contact-container">
+<form id="contactForm">
+<input id="name" placeholder="Your Name" required>
+<input id="email" type="email" placeholder="Your Email" required>
+<input id="phone" placeholder="Phone Number" required>
+<input id="date" type="date" placeholder="Preferred Date">
+<textarea id="message" placeholder="Your Message" rows="6"></textarea>
+<button type="submit">Send to WhatsApp</button>
+</form>
+<div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3808.054!2d78.56731524999999!3d17.371473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a4b4b4b4b4b%3A0x4b4b4b4b4b4b4b4b!2s11-13-326%2F1%2C%20Road%20No.%2010%2C%20Alkapuri%2C%20Nagole%2C%20Hyderabad%2C%20Telangana%20500068!5e0!3m2!1sen!2sin!4v1704191234567" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-content">
+<div>
+<h3>Shine Superspeciality Dental Clinic</h3>
+<p>Delivering elite dental care with advanced technology and personalized treatment in Hyderabad.</p>
+</div>
+<div>
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#team">Our Team</a></li>
+<li><a href="#contact">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h3>Contact Information</h3>
+<p><i class="fas fa-phone"></i> +91 98765 43210</p>
+<p><i class="fas fa-envelope"></i> info@shinedental.com</p>
+<p><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India</p>
+</div>
+</div>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+</div>
+<p>&copy; 2026 Shine Superspeciality Dental Clinic. All Rights Reserved.</p>
+</footer>
+
+<div class="floating-icons">
+<a href="https://wa.me/919876543210" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+919876543210" class="phone"><i class="fas fa-phone"></i></a>
+</div>
+
+<a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script>
+function toggleMenu(){
+  document.querySelector('.nav-links').classList.toggle('active');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+    if (window.innerWidth <= 900) {
+      toggleMenu();
+    }
+  });
+});
+
+document.querySelectorAll('.faq-question').forEach(item => {
+  item.addEventListener('click', () => {
+    const parent = item.parentElement;
+    parent.classList.toggle('active');
+  });
+});
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const date = document.getElementById('date').value;
+  const message = document.getElementById('message').value;
+  const text=`Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0APreferred Date: ${encodeURIComponent(date)}%0AMessage: ${encodeURIComponent(message)}`;
+  window.open(`https://wa.me/919876543210?text=${text}`);
+});
+
+document.getElementById("newsletterForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const email = document.getElementById('newsletterEmail').value;
+  alert(`Thank you for subscribing with ${email}!`);
+});
+
+// Back to Top Button
+window.addEventListener('scroll', () => {
+  const backToTop = document.querySelector('.back-to-top');
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>
