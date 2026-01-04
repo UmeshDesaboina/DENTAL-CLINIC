@@ -8,13 +8,13 @@
 <style>
 /* ================= ROOT & BASE ================= */
 :root{
-  --primary: #0a3a8e;
-  --secondary: #f0f7ff;
-  --accent: #f2b61b;
-  --dark: #0d1628;
+  --primary: #005b96;      /* Deep calming blue – trust & professionalism */
+  --secondary: #f0f8ff;    /* Very light blue tint – clean & soothing */
+  --accent: #00b7a8;       /* Fresh teal green – modern, health, vitality */
+  --dark: #1a2a44;         /* Dark navy – premium & elegant */
   --muted: #5c6b81;
   --white: #ffffff;
-  --gradient: linear-gradient(135deg, var(--primary) 0%, #1f5cd8 100%);
+  --gradient: linear-gradient(135deg, var(--primary) 0%, #0288d1 100%);
   --shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 *{
@@ -31,19 +31,23 @@ body{
 }
 /* ================= HEADER ================= */
 header{
-  background: var(--gradient);
+  background: rgba(0, 91, 150, 0.95);
+  backdrop-filter: blur(10px);
   color:var(--white);
   position:fixed;
   width:100%;
   top:0;
   z-index:1000;
   box-shadow:var(--shadow);
-  transition: background 0.3s;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+header.scrolled {
+  background: var(--primary);
 }
 .navbar{
   max-width:1400px;
   margin:auto;
-  padding:20px 30px;
+  padding:15px 30px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -75,6 +79,9 @@ header{
   display:none;
   flex-direction:column;
   cursor:pointer;
+  position:relative;
+  width:30px;
+  height:24px;
 }
 .hamburger span{
   height:3px;
@@ -82,6 +89,16 @@ header{
   background:var(--white);
   margin-bottom:5px;
   transition: 0.3s;
+  border-radius:3px;
+}
+.hamburger.active span:nth-child(1){
+  transform: rotate(45deg) translate(5px, 8px);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform: rotate(-45deg) translate(7px, -9px);
 }
 /* Mobile Menu */
 @media(max-width:900px){
@@ -89,7 +106,7 @@ header{
     display:none;
     flex-direction:column;
     position:absolute;
-    top:80px;
+    top:70px;
     left:0;
     width:100%;
     background:var(--primary);
@@ -103,7 +120,7 @@ header{
 #home{
   height:100vh;
   background:
-    linear-gradient(rgba(10,58,142,.7), rgba(10,58,142,.7)),
+    linear-gradient(rgba(0,91,150,.75), rgba(0,91,150,.85)),
     url("https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1920&q=80");
   background-size:cover;
   background-position:center;
@@ -113,23 +130,41 @@ header{
   text-align:left;
   position:relative;
   overflow:hidden;
+  padding-top: 80px;
 }
 .hero-content{
   max-width:1400px;
   padding:0 30px;
   margin:auto;
   z-index:1;
+  width:100%;
 }
 #home h1{
   font-size:58px;
   max-width:800px;
   margin-bottom:25px;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
 }
 #home p{
   font-size:22px;
   max-width:700px;
   margin-bottom:40px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+@media (max-width:1024px) {
+  #home h1 {font-size:48px;}
+  #home p {font-size:20px;}
+}
+@media (max-width:768px) {
+  #home h1 {font-size:42px;}
+  #home p {font-size:18px;}
+  .hero-content {text-align:center;}
+  #home {text-align:center;}
+  .btn-outline {margin-left:0; margin-top:20px; display:block;}
+}
+@media (max-width:480px) {
+  #home h1 {font-size:36px;}
+  #home p {font-size:16px;}
 }
 .btn{
   display:inline-block;
@@ -142,11 +177,11 @@ header{
 }
 .btn-primary{
   background:var(--accent);
-  color:var(--dark);
+  color:var(--white);
 }
 .btn-primary:hover{
   transform: translateY(-5px);
-  box-shadow:0 12px 35px rgba(242,182,27,0.5);
+  box-shadow:0 12px 35px rgba(0,183,168,0.5);
 }
 .btn-outline{
   border:2px solid white;
@@ -300,6 +335,12 @@ section{
   background:var(--gradient);
   color:white;
 }
+#testimonials .section-title h2 {
+  color: white;
+}
+#testimonials .section-title h2::after {
+  background: var(--accent);
+}
 .testimonial-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -317,11 +358,13 @@ section{
   font-style:italic;
   margin-bottom:25px;
   font-size:18px;
+  color: white;
 }
 .testimonial-item cite{
   display:block;
   font-weight:600;
   font-size:16px;
+  color: white;
 }
 /* ================= GALLERY ================= */
 #gallery{
@@ -340,6 +383,153 @@ section{
 }
 .gallery img:hover{
   transform: scale(1.08);
+}
+/* ================= AWARDS ================= */
+#awards {
+  background:var(--secondary);
+}
+.awards-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+}
+.award-item {
+  background:white;
+  padding:40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  transition:.4s;
+}
+.award-item:hover {
+  transform:translateY(-15px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+.award-item i {
+  font-size:50px;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.award-item h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+/* ================= FACILITIES ================= */
+#facilities {
+  background:var(--secondary);
+}
+.facilities-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+}
+.facility-item {
+  background:white;
+  padding:50px 40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  transition:.4s;
+  text-align:center;
+}
+.facility-item:hover {
+  transform:translateY(-15px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+.facility-item i {
+  font-size:50px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.facility-item h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+/* ================= DENTAL TOURISM ================= */
+#dental-tourism {
+  background:white;
+}
+.tourism-content {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+.tourism-text h2 {
+  font-size:42px;
+  color:var(--primary);
+  margin-bottom:30px;
+}
+.tourism-text p {
+  font-size:18px;
+  margin-bottom:25px;
+  color:var(--dark);
+}
+.tourism-benefits {
+  list-style:none;
+}
+.tourism-benefits li {
+  display:flex;
+  align-items:center;
+  margin-bottom:20px;
+  font-size:18px;
+}
+.tourism-benefits li i {
+  color:var(--accent);
+  font-size:28px;
+  margin-right:20px;
+}
+.tourism-image img {
+  width:100%;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+}
+@media(max-width:900px){
+  .tourism-content{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .tourism-benefits li {
+    justify-content:center;
+  }
+}
+/* ================= BLOG ================= */
+#blog {
+  background:white;
+}
+.blog-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:50px;
+}
+.blog-post {
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition: transform 0.4s;
+}
+.blog-post:hover {
+  transform: translateY(-10px);
+}
+.blog-post img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+.blog-info {
+  padding:30px;
+}
+.blog-info h3 {
+  color:var(--primary);
+  margin-bottom:15px;
+}
+.blog-info p {
+  margin-bottom:20px;
+}
+.blog-info a {
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
 }
 /* ================= FAQ ================= */
 #faq {
@@ -412,7 +602,7 @@ button{
 }
 button:hover{
   transform: translateY(-5px);
-  box-shadow:0 12px 35px rgba(10,58,142,0.4);
+  box-shadow:0 12px 35px rgba(0,91,150,0.4);
 }
 .map{
   height:500px;
@@ -506,12 +696,12 @@ footer{
 }
 .floating-icons .phone {
   background:var(--accent);
-  color:var(--dark);
+  color:var(--white);
 }
 /* ================= BACK TO TOP ================= */
 .back-to-top {
   position:fixed;
-  bottom:120px;
+  bottom:180px;
   right:30px;
   width:50px;
   height:50px;
@@ -532,248 +722,13 @@ footer{
   opacity:1;
   visibility:visible;
 }
-/* ================= NEW: AWARDS SECTION ================= */
-#awards {
-  background:var(--secondary);
-}
-.awards-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:50px;
-}
-.award-item {
-  background:white;
-  padding:40px;
-  border-radius:30px;
-  box-shadow:var(--shadow);
+/* ================= TIMINGS STYLES ================= */
+.timings-info {
   text-align:center;
-  transition:.4s;
-}
-.award-item:hover {
-  transform:translateY(-15px);
-  box-shadow:0 30px 60px rgba(0,0,0,0.2);
-}
-.award-item i {
-  font-size:50px;
-  color:var(--accent);
-  margin-bottom:20px;
-}
-.award-item h3 {
-  color:var(--primary);
-  margin-bottom:15px;
-}
-/* ================= NEW: BLOG SECTION ================= */
-#blog {
-  background:white;
-}
-.blog-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:50px;
-}
-.blog-post {
-  background:white;
-  border-radius:30px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  transition: transform 0.4s;
-}
-.blog-post:hover {
-  transform: translateY(-10px);
-}
-.blog-post img {
-  width:100%;
-  height:250px;
-  object-fit:cover;
-}
-.blog-info {
-  padding:30px;
-}
-.blog-info h3 {
-  color:var(--primary);
-  margin-bottom:15px;
-}
-.blog-info p {
-  margin-bottom:20px;
-}
-.blog-info a {
-  color:var(--accent);
-  text-decoration:none;
-  font-weight:600;
-}
-/* ================= NEW: FACILITIES SECTION ================= */
-#facilities {
-  background:var(--secondary);
-}
-.facilities-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:50px;
-}
-.facility-item {
-  background:white;
-  padding:50px 40px;
-  border-radius:30px;
-  box-shadow:var(--shadow);
-  transition:.4s;
-  text-align:center;
-}
-.facility-item:hover {
-  transform:translateY(-15px);
-  box-shadow:0 30px 60px rgba(0,0,0,0.2);
-}
-.facility-item i {
-  font-size:50px;
-  color:var(--primary);
-  margin-bottom:20px;
-}
-.facility-item h3 {
-  color:var(--primary);
-  margin-bottom:15px;
-}
-/* ================= NEW: NEWSLETTER FORM ================= */
-#newsletter {
-  background:var(--gradient);
-  color:white;
-  text-align:center;
-  padding:80px 30px;
-}
-#newsletter h2 {
-  font-size:40px;
-  margin-bottom:20px;
-}
-#newsletter p {
-  font-size:18px;
-  margin-bottom:40px;
-}
-.newsletter-form {
-  max-width:600px;
-  margin:0 auto;
-  display:flex;
-}
-.newsletter-form input {
-  flex:1;
-  padding:20px;
-  border:none;
-  border-radius:50px 0 0 50px;
-  font-size:16px;
-}
-.newsletter-form button {
-  padding:20px 40px;
-  border:none;
-  border-radius:0 50px 50px 0;
-  background:var(--accent);
-  color:var(--dark);
-  font-weight:700;
-  cursor:pointer;
-  transition: background 0.3s;
-}
-.newsletter-form button:hover {
-  background:var(--white);
-  color:var(--primary);
-}
-/* ================= FOOTER ================= */
-footer{
-  background:var(--dark);
-  color:white;
-  padding:60px 30px 30px;
-}
-.footer-content {
-  max-width:1400px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-  gap:50px;
-  text-align:left;
-}
-.footer-content h3 {
-  color:var(--accent);
-  margin-bottom:20px;
-}
-.footer-content ul {
-  list-style:none;
-}
-.footer-content ul li {
-  margin-bottom:10px;
-}
-.footer-content a {
-  color:white;
-  text-decoration:none;
-  transition: color 0.3s;
-}
-.footer-content a:hover {
-  color:var(--accent);
-}
-.social-links {
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  margin:40px 0;
-}
-.social-links a {
-  color:white;
-  font-size:30px;
-  transition: transform 0.3s;
-}
-.social-links a:hover {
-  transform: translateY(-8px);
-  color:var(--accent);
-}
-/* ================= FLOATING ICONS ================= */
-.floating-icons {
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  z-index:999;
-}
-.floating-icons a {
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-  font-size:28px;
-  transition: transform 0.4s;
-}
-.floating-icons a:hover {
-  transform: scale(1.15);
-}
-.floating-icons .whatsapp {
-  background:#25D366;
-  color:white;
-}
-.floating-icons .phone {
-  background:var(--accent);
-  color:var(--dark);
-}
-/* ================= BACK TO TOP ================= */
-.back-to-top {
-  position:fixed;
-  bottom:120px;
-  right:30px;
-  width:50px;
-  height:50px;
-  background:var(--primary);
-  color:white;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
-  font-size:24px;
-  opacity:0;
-  visibility:hidden;
-  transition: all 0.4s;
-  z-index:998;
-}
-.back-to-top.visible {
-  opacity:1;
-  visibility:visible;
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
 }
 /* ================= ANIMATIONS ================= */
 @keyframes fadeInUp {
@@ -799,15 +754,19 @@ section > * {
 <li><a href="#gallery">Gallery</a></li>
 <li><a href="#awards">Awards</a></li>
 <li><a href="#facilities">Facilities</a></li>
+<li><a href="#dental-tourism">Dental Tourism</a></li>
 <li><a href="#blog">Blog</a></li>
 <li><a href="#faq">FAQ</a></li>
-<li><a href="#newsletter">Newsletter</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 <div class="hamburger" onclick="toggleMenu()">
 <span></span><span></span><span></span>
 </div>
 </nav>
+<!-- Clinic Timings added below navbar -->
+<div class="timings-info">
+  <strong>Clinic Timings:</strong> Mon - Sat: 9:00 AM - 1:00 PM & 4:00 PM - 9:00 PM | Sunday: By Appointment Only
+</div>
 </header>
 
 <section id="home">
@@ -815,7 +774,7 @@ section > * {
 <h1>Elite Superspeciality Dental Care for Timeless Smiles</h1>
 <p>Discover unparalleled dental excellence with innovative technology, expert specialists, and luxurious patient experience in Hyderabad.</p>
 <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
-<a href="tel:+919876543210" class="btn btn-outline">Contact Us</a>
+<a href="tel:+919908655335" class="btn btn-outline">Contact Us</a>
 </div>
 </section>
 
@@ -947,6 +906,29 @@ section > * {
 </div>
 </section>
 
+<section id="dental-tourism">
+<div class="section-title"><h2>Dental Tourism at Shine</h2></div>
+<div class="tourism-content">
+<div class="tourism-text">
+<h2>World-Class Dental Care in Hyderabad</h2>
+<p>Experience premium dental treatments at a fraction of international costs without compromising on quality. Hyderabad is emerging as a top dental tourism destination.</p>
+<p>Combine your smile transformation with a cultural getaway in one of India's most vibrant cities.</p>
+<ul class="tourism-benefits">
+<li><i class="fas fa-dollar-sign"></i> Up to 70% savings compared to USA/UK/Australia</li>
+<li><i class="fas fa-plane"></i> Dedicated international patient coordinator</li>
+<li><i class="fas fa-hotel"></i> Assistance with accommodation & local travel</li>
+<li><i class="fas fa-language"></i> Multilingual staff & translation services</li>
+<li><i class="fas fa-clock"></i> Fast-track appointments for overseas patients</li>
+<li><i class="fas fa-passport"></i> Visa and travel guidance support</li>
+</ul>
+<a href="#contact" class="btn btn-primary">Plan Your Dental Trip</a>
+</div>
+<div class="tourism-image">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Dental Tourism Experience">
+</div>
+</div>
+</section>
+
 <section id="blog">
 <div class="section-title"><h2>Our Dental Blog</h2></div>
 <div class="blog-grid">
@@ -997,15 +979,6 @@ section > * {
 </div>
 </section>
 
-<section id="newsletter">
-<h2>Subscribe to Our Newsletter</h2>
-<p>Stay updated with the latest dental tips, offers, and clinic news.</p>
-<form class="newsletter-form" id="newsletterForm">
-<input type="email" id="newsletterEmail" placeholder="Enter your email" required>
-<button type="submit">Subscribe</button>
-</form>
-</section>
-
 <section id="contact">
 <div class="section-title"><h2>Contact & Visit Us</h2></div>
 <div class="contact-container">
@@ -1028,6 +1001,9 @@ section > * {
 <div>
 <h3>Shine Superspeciality Dental Clinic</h3>
 <p>Delivering elite dental care with advanced technology and personalized treatment in Hyderabad.</p>
+<p><strong>Clinic Timings:</strong><br>
+Mon - Sat: 9:00 AM - 1:00 PM & 4:00 PM - 9:00 PM<br>
+Sunday: By Appointment Only</p>
 </div>
 <div>
 <h3>Quick Links</h3>
@@ -1040,7 +1016,7 @@ section > * {
 </div>
 <div>
 <h3>Contact Information</h3>
-<p><i class="fas fa-phone"></i> +91 98765 43210</p>
+<p><i class="fas fa-phone"></i> +919908655335</p>
 <p><i class="fas fa-envelope"></i> info@shinedental.com</p>
 <p><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India</p>
 </div>
@@ -1054,16 +1030,21 @@ section > * {
 <p>&copy; 2026 Shine Superspeciality Dental Clinic. All Rights Reserved.</p>
 </footer>
 
+<!-- Floating Icons -->
 <div class="floating-icons">
-<a href="https://wa.me/919876543210" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-<a href="tel:+919876543210" class="phone"><i class="fas fa-phone"></i></a>
+<a href="https://wa.me/919908655335" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+919908655335" class="phone"><i class="fas fa-phone"></i></a>
 </div>
 
+<!-- Back to Top Button -->
 <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
 <script>
 function toggleMenu(){
-  document.querySelector('.nav-links').classList.toggle('active');
+  const menu = document.querySelector('.nav-links');
+  const hamburger = document.querySelector('.hamburger');
+  menu.classList.toggle('active');
+  hamburger.classList.toggle('active');
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1093,16 +1074,10 @@ document.getElementById("contactForm").addEventListener("submit",function(e){
   const date = document.getElementById('date').value;
   const message = document.getElementById('message').value;
   const text=`Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0APreferred Date: ${encodeURIComponent(date)}%0AMessage: ${encodeURIComponent(message)}`;
-  window.open(`https://wa.me/919876543210?text=${text}`);
+  window.open(`https://wa.me/919908655335?text=${text}`);
 });
 
-document.getElementById("newsletterForm").addEventListener("submit",function(e){
-  e.preventDefault();
-  const email = document.getElementById('newsletterEmail').value;
-  alert(`Thank you for subscribing with ${email}!`);
-});
-
-// Back to Top Button
+// Back to Top visibility
 window.addEventListener('scroll', () => {
   const backToTop = document.querySelector('.back-to-top');
   if (window.scrollY > 500) {
@@ -1111,7 +1086,18 @@ window.addEventListener('scroll', () => {
     backToTop.classList.remove('visible');
   }
 });
+
+// Navbar background change on scroll
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
 </script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
