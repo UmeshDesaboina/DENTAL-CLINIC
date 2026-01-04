@@ -610,6 +610,13 @@ button:hover{
   overflow:hidden;
   box-shadow:var(--shadow);
 }
+.clinic-timings-contact {
+  text-align:center;
+  margin-top:30px;
+  font-size:17px;
+  font-weight:600;
+  color:var(--primary);
+}
 @media(max-width:900px){
   .contact-container{
     grid-template-columns:1fr;
@@ -722,14 +729,6 @@ footer{
   opacity:1;
   visibility:visible;
 }
-/* ================= TIMINGS STYLES ================= */
-.timings-info {
-  text-align:center;
-  margin-top: 15px;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.9);
-}
 /* ================= ANIMATIONS ================= */
 @keyframes fadeInUp {
   from {opacity: 0; transform: translateY(30px);}
@@ -763,10 +762,6 @@ section > * {
 <span></span><span></span><span></span>
 </div>
 </nav>
-<!-- Clinic Timings added below navbar -->
-<div class="timings-info">
-  <strong>Clinic Timings:</strong> Mon - Sat: 9:00 AM - 1:00 PM & 4:00 PM - 9:00 PM | Sunday: By Appointment Only
-</div>
 </header>
 
 <section id="home">
@@ -989,6 +984,11 @@ section > * {
 <input id="date" type="date" placeholder="Preferred Date">
 <textarea id="message" placeholder="Your Message" rows="6"></textarea>
 <button type="submit">Send to WhatsApp</button>
+<div class="clinic-timings-contact">
+<strong>Clinic Timings:</strong><br>
+Mon - Sat: 9:00 AM - 1:00 PM & 4:00 PM - 9:00 PM<br>
+Sunday: By Appointment Only
+</div>
 </form>
 <div class="map">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3808.054!2d78.56731524999999!3d17.371473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a4b4b4b4b4b%3A0x4b4b4b4b4b4b4b4b!2s11-13-326%2F1%2C%20Road%20No.%2010%2C%20Alkapuri%2C%20Nagole%2C%20Hyderabad%2C%20Telangana%20500068!5e0!3m2!1sen!2sin!4v1704191234567" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1047,14 +1047,19 @@ function toggleMenu(){
   hamburger.classList.toggle('active');
 }
 
+// Smooth scroll for internal links only (excludes back-to-top from closing mobile menu unnecessarily)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-    if (window.innerWidth <= 900) {
-      toggleMenu();
+    const targetId = this.getAttribute('href');
+    if (targetId !== '#') {
+      e.preventDefault();
+      document.querySelector(targetId).scrollIntoView({
+        behavior: 'smooth'
+      });
+      // Only close mobile menu if a navigation link was clicked (not back-to-top)
+      if (window.innerWidth <= 900 && this.closest('.nav-links')) {
+        toggleMenu();
+      }
     }
   });
 });
