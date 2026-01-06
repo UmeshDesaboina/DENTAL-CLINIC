@@ -8,10 +8,10 @@
 <style>
 /* ================= ROOT & BASE ================= */
 :root{
-  --primary: #005b96;      /* Deep calming blue – trust & professionalism */
-  --secondary: #f0f8ff;    /* Very light blue tint – clean & soothing */
-  --accent: #00b7a8;       /* Fresh teal green – modern, health, vitality */
-  --dark: #1a2a44;         /* Dark navy – premium & elegant */
+  --primary: #005b96;
+  --secondary: #f0f8ff;
+  --accent: #00b7a8;
+  --dark: #1a2a44;
   --muted: #5c6b81;
   --white: #ffffff;
   --gradient: linear-gradient(135deg, var(--primary) 0%, #0288d1 100%);
@@ -51,6 +51,7 @@ header.scrolled {
   display:flex;
   justify-content:space-between;
   align-items:center;
+  
 }
 .logo{
   font-size:26px;
@@ -300,10 +301,22 @@ section{
   background:white;
 }
 .team-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ✅ 3 doctors per row */
+  gap: 50px;
 }
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .team-member {
   background:white;
   border-radius:30px;
@@ -567,7 +580,9 @@ section{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:70px;
+  align-items:flex-start; /* ✅ THIS FIXES EXTRA SPACE */
 }
+
 form{
   display:flex;
   flex-direction:column;
@@ -604,26 +619,70 @@ button:hover{
   transform: translateY(-5px);
   box-shadow:0 12px 35px rgba(0,91,150,0.4);
 }
-.map{
-  height:500px;
+.map-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.map-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.map-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.map-address {
+  text-align: center;
+  font-size: 18px;
+  color: var(--dark);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.map {
+  height: 500px;
   border-radius:30px;
   overflow:hidden;
   box-shadow:var(--shadow);
 }
 .clinic-timings-contact {
   text-align:center;
-  margin-top:30px;
+  margin-top:8px;
+  margin-bottom:0;            /* Remove bottom space */
+  padding-bottom:0;           /* Extra safety */
   font-size:17px;
   font-weight:600;
   color:var(--primary);
+  line-height:1.4;
+}
+.clinic-timings-contact br {
+  margin:0;
+  padding:0;
+  display:block;
+  line-height:1;              /* Remove default <br> spacing */
 }
 @media(max-width:900px){
   .contact-container{
     grid-template-columns:1fr;
   }
-  .map{
+  .map-container {
+    gap: 40px;
+  }
+  .map {
     height:400px;
-    margin-top:50px;
+  }
+  .map-title {
+    font-size: 24px;
+  }
+  .map-address {
+    font-size: 16px;
+  }
+  .clinic-timings-contact {
+    margin-top:8px;
+    margin-bottom:0;
   }
 }
 /* ================= FOOTER ================= */
@@ -763,7 +822,6 @@ section > * {
 </div>
 </nav>
 </header>
-
 <section id="home">
 <div class="hero-content">
 <h1>Elite Superspeciality Dental Care for Timeless Smiles</h1>
@@ -772,7 +830,6 @@ section > * {
 <a href="tel:+919908655335" class="btn btn-outline">Contact Us</a>
 </div>
 </section>
-
 <section id="about">
 <div class="section-title"><h2>Why Shine Stands Out</h2></div>
 <div class="trust">
@@ -782,7 +839,6 @@ section > * {
 <div class="trust-box"><i class="fas fa-heart"></i><br>Luxury Patient Experience</div>
 </div>
 </section>
-
 <section id="services">
 <div class="section-title"><h2>Our Elite Specialities</h2></div>
 <div class="service-grid">
@@ -794,7 +850,6 @@ section > * {
 <div class="service-item"><h3>Pediatric Dentistry</h3><p>Child-friendly care with sedation options for stress-free visits.</p></div>
 </div>
 </section>
-
 <section id="process">
 <div class="section-title"><h2>Your Premium Journey</h2></div>
 <div class="timeline">
@@ -804,12 +859,11 @@ section > * {
 <div class="step"><h3>VIP Aftercare</h3><p>Concierge follow-up and lifetime smile maintenance.</p></div>
 </div>
 </section>
-
 <section id="team">
 <div class="section-title"><h2>Our Expert Team</h2></div>
 <div class="team-grid">
 <div class="team-member">
-<img src="https://images.unsplash.com/photo-1559839749-2b71ea197ec8?auto=format&fit=crop&w=800&q=80" alt="Dr. John Doe">
+<img src="ddd.webp" alt="Dr. John Doe">
 <div class="team-info">
 <h3>Dr. John Doe</h3>
 <p>Chief Dental Surgeon, 20+ Years Experience</p>
@@ -829,9 +883,29 @@ section > * {
 <p>Orthodontist, Award-Winning Expert</p>
 </div>
 </div>
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16c?auto=format&fit=crop&w=800&q=80" alt="Dr. Mike Johnson">
+<div class="team-info">
+<h3>Dr. Mike Johnson</h3>
+<p>Orthodontist, Award-Winning Expert</p>
+</div>
+</div>
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16c?auto=format&fit=crop&w=800&q=80" alt="Dr. Mike Johnson">
+<div class="team-info">
+<h3>Dr. Mike Johnson</h3>
+<p>Orthodontist, Award-Winning Expert</p>
+</div>
+</div>
+<div class="team-member">
+<img src="dd" alt="Dr. Mike Johnson">
+<div class="team-info">
+<h3>Dr. Mike Johnson</h3>
+<p>Orthodontist, Award-Winning Expert</p>
+</div>
+</div>
 </div>
 </section>
-
 <section id="testimonials">
 <div class="section-title"><h2>Client Experiences</h2></div>
 <div class="testimonial-grid">
@@ -841,7 +915,6 @@ section > * {
 <div class="testimonial-item"><p>"Pain-free and sophisticated. Shine is the gold standard in Hyderabad."</p><cite>- Alexander K.</cite></div>
 </div>
 </section>
-
 <section id="gallery">
 <div class="section-title"><h2>Our Luxurious Clinic</h2></div>
 <div class="gallery">
@@ -853,7 +926,6 @@ section > * {
 <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Reception Area">
 </div>
 </section>
-
 <section id="awards">
 <div class="section-title"><h2>Awards & Certifications</h2></div>
 <div class="awards-grid">
@@ -874,7 +946,6 @@ section > * {
 </div>
 </div>
 </section>
-
 <section id="facilities">
 <div class="section-title"><h2>Our State-of-the-Art Facilities</h2></div>
 <div class="facilities-grid">
@@ -900,7 +971,6 @@ section > * {
 </div>
 </div>
 </section>
-
 <section id="dental-tourism">
 <div class="section-title"><h2>Dental Tourism at Shine</h2></div>
 <div class="tourism-content">
@@ -923,7 +993,6 @@ section > * {
 </div>
 </div>
 </section>
-
 <section id="blog">
 <div class="section-title"><h2>Our Dental Blog</h2></div>
 <div class="blog-grid">
@@ -953,7 +1022,6 @@ section > * {
 </div>
 </div>
 </section>
-
 <section id="faq">
 <div class="section-title"><h2>Frequently Asked Questions</h2></div>
 <div class="faq-item">
@@ -973,7 +1041,6 @@ section > * {
 <div class="faq-answer">24/7 priority access for our patients.</div>
 </div>
 </section>
-
 <section id="contact">
 <div class="section-title"><h2>Contact & Visit Us</h2></div>
 <div class="contact-container">
@@ -990,12 +1057,24 @@ Mon - Sat: 9:00 AM - 1:00 PM & 4:00 PM - 9:00 PM<br>
 Sunday: By Appointment Only
 </div>
 </form>
-<div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3808.054!2d78.56731524999999!3d17.371473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a4b4b4b4b4b%3A0x4b4b4b4b4b4b4b4b!2s11-13-326%2F1%2C%20Road%20No.%2010%2C%20Alkapuri%2C%20Nagole%2C%20Hyderabad%2C%20Telangana%20500068!5e0!3m2!1sen!2sin!4v1704191234567" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="map-container">
+  <div class="map-wrapper">
+    <div class="map-title">Alkapuri Branch</div>
+    <div class="map-address">11-13-326/1, Road No. 10, Alkapuri Colony, Nagole, Hyderabad, Telangana 500068</div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Shine+Superspeciality+Dental+Clinic,+LB+Nagar,+Hyderabad&output=embed" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""></iframe>
+    </div>
+  </div>
+  <div class="map-wrapper">
+    <div class="map-title">Ibrahimpatnam Branch</div>
+    <div class="map-address">Mallapa Complex, Opposite Main Bus Stand, Ibrahimpatnam, Telangana 501506</div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Shine+Super+Speciality+Dental+Clinic,+Ibrahimpatnam,+Telangana&output=embed" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""></iframe>
+    </div>
+  </div>
 </div>
 </div>
 </section>
-
 <footer>
 <div class="footer-content">
 <div>
@@ -1029,16 +1108,13 @@ Sunday: By Appointment Only</p>
 </div>
 <p>&copy; 2026 Shine Superspeciality Dental Clinic. All Rights Reserved.</p>
 </footer>
-
 <!-- Floating Icons -->
 <div class="floating-icons">
 <a href="https://wa.me/919908655335" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
 <a href="tel:+919908655335" class="phone"><i class="fas fa-phone"></i></a>
 </div>
-
 <!-- Back to Top Button -->
 <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
-
 <script>
 function toggleMenu(){
   const menu = document.querySelector('.nav-links');
@@ -1046,8 +1122,6 @@ function toggleMenu(){
   menu.classList.toggle('active');
   hamburger.classList.toggle('active');
 }
-
-// Smooth scroll for internal links only (excludes back-to-top from closing mobile menu unnecessarily)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const targetId = this.getAttribute('href');
@@ -1056,21 +1130,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       document.querySelector(targetId).scrollIntoView({
         behavior: 'smooth'
       });
-      // Only close mobile menu if a navigation link was clicked (not back-to-top)
       if (window.innerWidth <= 900 && this.closest('.nav-links')) {
         toggleMenu();
       }
     }
   });
 });
-
 document.querySelectorAll('.faq-question').forEach(item => {
   item.addEventListener('click', () => {
     const parent = item.parentElement;
     parent.classList.toggle('active');
   });
 });
-
 document.getElementById("contactForm").addEventListener("submit",function(e){
   e.preventDefault();
   const name = document.getElementById('name').value;
@@ -1081,8 +1152,6 @@ document.getElementById("contactForm").addEventListener("submit",function(e){
   const text=`Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0APreferred Date: ${encodeURIComponent(date)}%0AMessage: ${encodeURIComponent(message)}`;
   window.open(`https://wa.me/919908655335?text=${text}`);
 });
-
-// Back to Top visibility
 window.addEventListener('scroll', () => {
   const backToTop = document.querySelector('.back-to-top');
   if (window.scrollY > 500) {
@@ -1091,8 +1160,6 @@ window.addEventListener('scroll', () => {
     backToTop.classList.remove('visible');
   }
 });
-
-// Navbar background change on scroll
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (window.scrollY > 50) {
@@ -1102,7 +1169,6 @@ window.addEventListener('scroll', () => {
   }
 });
 </script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
