@@ -319,12 +319,28 @@ section{padding:120px 0;}
 }
 .doc-card:hover{transform:translateY(-10px); box-shadow:var(--shadow-lg);}
 .doc-photo{
-  height:220px; background:linear-gradient(135deg,var(--teal),var(--teal-2)); display:flex; align-items:center; justify-content:center;
+  height:220px; background:linear-gradient(135deg,var(--teal),var(--teal-2));
+  display:flex; align-items:center; justify-content:center;
   position:relative; overflow:hidden;
 }
-.doc-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; z-index:1;}
-.doc-photo .initials{font-family:'Fraunces',serif; font-size:52px; color:rgba(255,255,255,.92); font-weight:600; position:relative; z-index:0;}
-.doc-photo::after{content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 0%, rgba(255,107,74,.35), transparent 60%); z-index:0;}
+/* Blurred, cropped copy of the same photo fills the box edge-to-edge as a backdrop */
+.doc-photo .photo-bg{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  filter:blur(20px) brightness(.7) saturate(1.15);
+  transform:scale(1.25);
+  z-index:0;
+}
+/* The real photo is never cropped — it scales to fit within the box at its true aspect ratio */
+.doc-photo .photo-fg{
+  position:relative; z-index:1;
+  max-width:100%; max-height:100%; width:auto; height:auto;
+  object-fit:contain;
+  box-shadow:0 10px 26px rgba(0,0,0,.32);
+  border-radius:4px;
+}
+.doc-photo .initials{font-family:'Fraunces',serif; font-size:52px; color:rgba(255,255,255,.92); font-weight:600; position:relative; z-index:-1;}
+.doc-photo::after{content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 0%, rgba(255,107,74,.35), transparent 60%); z-index:0; pointer-events:none;}
 .doc-info{padding:26px 26px 28px;}
 .doc-info h3{font-size:19px; margin-bottom:4px;}
 .doc-info .role{color:var(--coral-deep); font-weight:700; font-size:13.5px; margin-bottom:14px; text-transform:uppercase; letter-spacing:.03em;}
@@ -780,7 +796,11 @@ footer .footer-logo-group .est-line{
 <div class="team-grid stagger">
 
 <div class="doc-card reveal" style="--i:0">
-<div class="doc-photo"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Chandan Kumar" onerror="this.style.display='none'"><span class="initials">CK</span></div>
+<div class="doc-photo">
+<img class="photo-bg" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&h=500&q=80" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Chandan Kumar" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">CK</span>
+</div>
 <div class="doc-info">
 <h3>Dr. Chandan Kumar</h3><div class="role">Oral Maxillofacial Pathologist &amp; Implantologist</div>
 <div class="doc-meta"><span>BDS, MDS</span><span>15 yrs experience</span></div>
@@ -796,7 +816,11 @@ footer .footer-logo-group .est-line{
 </div>
 
 <div class="doc-card reveal" style="--i:1">
-<div class="doc-photo"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Annapoorna Devi" onerror="this.style.display='none'"><span class="initials">AD</span></div>
+<div class="doc-photo">
+<img class="photo-bg" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&h=500&q=80" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Annapoorna Devi" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">AD</span>
+</div>
 <div class="doc-info">
 <h3>Dr. Annapoorna Devi</h3><div class="role">Cosmetic Dentist</div>
 <div class="doc-meta"><span>BDS, MBA-HM</span><span>14 yrs experience</span></div>
@@ -811,21 +835,67 @@ footer .footer-logo-group .est-line{
 </div>
 
 <div class="doc-card reveal" style="--i:2">
-<div class="doc-photo"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Mourya" onerror="this.style.display='none'"><span class="initials">M</span></div>
+<div class="doc-photo">
+<img class="photo-bg" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&h=500&q=80" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Mourya" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">M</span>
+</div>
 <div class="doc-info"><h3>Dr. Mourya</h3><div class="role">Cosmetic Dentist</div><div class="doc-meta"><span>BDS</span><span>5 yrs experience</span></div><p>Focuses on whitening, bonding and cosmetic restorations for everyday smile care.</p></div>
 </div>
 
-<div class="doc-card reveal" style="--i:0"><div class="doc-photo"><img src="DRSADIQALI.jpg" alt="Dr. Sadiq" onerror="this.style.display='none'"><span class="initials">S</span></div><div class="doc-info"><h3>Dr. Sadiq</h3><div class="role">Prosthodontist &amp; Implantologist</div><div class="doc-meta"><span>BDS, MDS</span><span>7 yrs experience</span></div><p>Handles crowns, bridges, dentures and full-mouth implant rehabilitation.</p></div></div>
+<div class="doc-card reveal" style="--i:0">
+<div class="doc-photo">
+<img class="photo-bg" src="DRSADIQALI.jpg" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="DRSADIQALI.jpg" alt="Dr. Sadiq" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">S</span>
+</div>
+<div class="doc-info"><h3>Dr. Sadiq</h3><div class="role">Prosthodontist &amp; Implantologist</div><div class="doc-meta"><span>BDS, MDS</span><span>7 yrs experience</span></div><p>Handles crowns, bridges, dentures and full-mouth implant rehabilitation.</p></div>
+</div>
 
-<div class="doc-card reveal" style="--i:1"><div class="doc-photo"><img src="rajesh.jpeg" alt="Dr. Rajesh" onerror="this.style.display='none'"><span class="initials">R</span></div><div class="doc-info"><h3>Dr. Rajesh</h3><div class="role">Oral &amp; Maxillofacial Surgeon</div><div class="doc-meta"><span>BDS, MDS</span><span>7 yrs experience</span></div><p>Performs wisdom tooth extractions and minimally invasive oral surgery.</p></div></div>
+<div class="doc-card reveal" style="--i:1">
+<div class="doc-photo">
+<img class="photo-bg" src="rajesh.jpeg" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="rajesh.jpeg" alt="Dr. Rajesh" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">R</span>
+</div>
+<div class="doc-info"><h3>Dr. Rajesh</h3><div class="role">Oral &amp; Maxillofacial Surgeon</div><div class="doc-meta"><span>BDS, MDS</span><span>7 yrs experience</span></div><p>Performs wisdom tooth extractions and minimally invasive oral surgery.</p></div>
+</div>
 
-<div class="doc-card reveal" style="--i:2"><div class="doc-photo"><img src="https://images.unsplash.com/photo-1673865641073-4479f93a7776?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Shruthi" onerror="this.style.display='none'"><span class="initials">S</span></div><div class="doc-info"><h3>Dr. Shruthi</h3><div class="role">Pedodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>4 yrs experience</span></div><p>Dedicated to gentle, child-friendly dentistry and preventive care for young patients.</p></div></div>
+<div class="doc-card reveal" style="--i:2">
+<div class="doc-photo">
+<img class="photo-bg" src="https://images.unsplash.com/photo-1673865641073-4479f93a7776?auto=format&fit=crop&w=500&h=500&q=80" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="https://images.unsplash.com/photo-1673865641073-4479f93a7776?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Shruthi" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">S</span>
+</div>
+<div class="doc-info"><h3>Dr. Shruthi</h3><div class="role">Pedodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>4 yrs experience</span></div><p>Dedicated to gentle, child-friendly dentistry and preventive care for young patients.</p></div>
+</div>
 
-<div class="doc-card reveal" style="--i:0"><div class="doc-photo"><img src="https://images.unsplash.com/photo-1645066928295-2506defde470?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Hemanth" onerror="this.style.display='none'"><span class="initials">H</span></div><div class="doc-info"><h3>Dr. Hemanth</h3><div class="role">Periodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>9 yrs experience</span></div><p>Manages gum health, periodontal therapy and laser-assisted soft-tissue treatment.</p></div></div>
+<div class="doc-card reveal" style="--i:0">
+<div class="doc-photo">
+<img class="photo-bg" src="https://images.unsplash.com/photo-1645066928295-2506defde470?auto=format&fit=crop&w=500&h=500&q=80" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="https://images.unsplash.com/photo-1645066928295-2506defde470?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Hemanth" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">H</span>
+</div>
+<div class="doc-info"><h3>Dr. Hemanth</h3><div class="role">Periodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>9 yrs experience</span></div><p>Manages gum health, periodontal therapy and laser-assisted soft-tissue treatment.</p></div>
+</div>
 
-<div class="doc-card reveal" style="--i:1"><div class="doc-photo"><img src="ravi.jpeg" alt="Dr. Ravi" onerror="this.style.display='none'"><span class="initials">R</span></div><div class="doc-info"><h3>Dr. Ravi</h3><div class="role">Orthodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>6 yrs experience</span></div><p>Plans clear aligner and ceramic brace treatment for all ages.</p></div></div>
+<div class="doc-card reveal" style="--i:1">
+<div class="doc-photo">
+<img class="photo-bg" src="ravi.jpeg" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="ravi.jpeg" alt="Dr. Ravi" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">R</span>
+</div>
+<div class="doc-info"><h3>Dr. Ravi</h3><div class="role">Orthodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>6 yrs experience</span></div><p>Plans clear aligner and ceramic brace treatment for all ages.</p></div>
+</div>
 
-<div class="doc-card reveal" style="--i:2"><div class="doc-photo"><img src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Siddarth" onerror="this.style.display='none'"><span class="initials">S</span></div><div class="doc-info"><h3>Dr. Siddarth</h3><div class="role">Orthodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>4 yrs experience</span></div><p>Supports orthodontic care with a focus on discreet, effective correction.</p></div></div>
+<div class="doc-card reveal" style="--i:2">
+<div class="doc-photo">
+<img class="photo-bg" src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=500&h=500&q=80" aria-hidden="true" alt="" onerror="this.style.display='none'">
+<img class="photo-fg" src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=500&h=500&q=80" alt="Dr. Siddarth" onerror="this.style.display='none'; this.previousElementSibling.style.display='none';">
+<span class="initials">S</span>
+</div>
+<div class="doc-info"><h3>Dr. Siddarth</h3><div class="role">Orthodontist</div><div class="doc-meta"><span>BDS, MDS</span><span>4 yrs experience</span></div><p>Supports orthodontic care with a focus on discreet, effective correction.</p></div>
+</div>
 
 </div>
 </div>
