@@ -99,6 +99,7 @@ header .navbar{
 .nav-links a{
   color:rgba(255,255,255,.86); text-decoration:none; font-weight:600; font-size:14.5px;
   padding:10px 15px; border-radius:30px; transition:.3s;
+  white-space:nowrap;
 }
 .nav-links a:hover{color:#fff; background:rgba(255,255,255,.12);}
 .nav-cta{
@@ -106,6 +107,10 @@ header .navbar{
   box-shadow:0 8px 20px rgba(255,107,74,.35);
 }
 .nav-cta:hover{background:var(--coral-deep) !important; transform:translateY(-2px);}
+.nav-offer{
+  background:linear-gradient(120deg, var(--gold), #E4B24C) !important; color:var(--teal-deep) !important;
+}
+.nav-offer:hover{background:var(--gold) !important; color:#fff !important;}
 header.scrolled{
   background:rgba(10,43,42,.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   padding:13px 0; box-shadow:0 10px 40px rgba(0,0,0,.18);
@@ -115,7 +120,7 @@ header.scrolled{
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
-@media(max-width:1080px){
+@media(max-width:1250px){
   .nav-links{
     position:fixed; inset:0 0 0 auto; height:100vh; width:min(340px,82vw);
     background:var(--teal-deep); flex-direction:column; justify-content:center; align-items:flex-start;
@@ -126,11 +131,48 @@ header.scrolled{
   .hamburger{display:flex;}
 }
 
+/* ============ PROMO RIBBON (offers banner) ============ */
+#promoRibbon{
+  position:fixed; top:0; width:100%; z-index:1001;
+  background:linear-gradient(90deg, var(--teal-deep), #103F3C);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  overflow:hidden;
+  transition:max-height .45s var(--ease), opacity .35s var(--ease), padding .45s var(--ease);
+  max-height:54px;
+}
+#promoRibbon.hidden{max-height:0; opacity:0; padding-top:0; padding-bottom:0; border-bottom-color:transparent;}
+#promoRibbon .wrap{
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  padding:12px 32px; flex-wrap:wrap; text-align:center; position:relative;
+}
+#promoRibbon p{
+  color:#fff; font-size:13.5px; font-weight:600; margin:0;
+}
+#promoRibbon p b{color:var(--gold); font-family:'IBM Plex Mono',monospace; font-weight:700;}
+#promoRibbon a.ribbon-link{
+  display:inline-flex; align-items:center; gap:6px; background:var(--coral); color:#fff; font-size:12.5px; font-weight:700;
+  padding:6px 14px; border-radius:100px; text-decoration:none; white-space:nowrap; transition:.3s;
+}
+#promoRibbon a.ribbon-link:hover{background:var(--coral-deep); transform:translateY(-1px);}
+#promoRibbon .ribbon-close{
+  position:absolute; right:20px; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,.6);
+  font-size:15px; cursor:pointer; padding:6px; line-height:1; transition:.2s;
+}
+#promoRibbon .ribbon-close:hover{color:#fff;}
+@media(max-width:700px){
+  #promoRibbon{max-height:84px;}
+  #promoRibbon .ribbon-close{display:none;}
+}
+@media(max-width:480px){
+  #promoRibbon p{font-size:12px;}
+}
+
 /* ================= HERO ================= */
 #home{
   min-height:100vh; position:relative; display:flex; align-items:center;
   background:radial-gradient(ellipse at 20% 0%, #103F3C 0%, var(--teal-deep) 55%, #071E1D 100%);
   overflow:hidden; padding:150px 0 90px;
+  transition:padding-top .4s var(--ease);
 }
 #home .arch-bg{
   position:absolute; right:-8%; top:50%; transform:translateY(-46%); width:min(62vw,900px); opacity:.9; pointer-events:none;
@@ -188,6 +230,46 @@ header.scrolled{
 @media(max-width:980px){
   .hero-grid{grid-template-columns:1fr; text-align:left;}
   .hero-visual{display:none;}
+}
+
+/* ================= OFFER BANNER SECTION (homepage) ================= */
+#offer-banner{padding:0; position:relative;}
+.offer-banner-inner{
+  background:linear-gradient(120deg, var(--teal-deep) 0%, #123F3C 48%, #16463F 100%);
+  border-radius:0; padding:64px 0; position:relative; overflow:hidden;
+}
+.offer-banner-inner::before{
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(circle at 85% 20%, rgba(255,183,76,.16), transparent 55%),
+                    radial-gradient(circle at 10% 90%, rgba(255,107,74,.14), transparent 50%);
+  pointer-events:none;
+}
+.offer-banner-grid{
+  position:relative; z-index:1; display:grid; grid-template-columns:auto 1fr auto; gap:36px; align-items:center;
+}
+.offer-banner-media{
+  width:112px; height:112px; border-radius:50%; overflow:hidden; border:3px solid rgba(255,255,255,.18);
+  box-shadow:var(--shadow-lg); flex-shrink:0;
+}
+.offer-banner-media img{width:100%; height:100%; object-fit:cover;}
+.offer-banner-text .tag{
+  display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+  color:var(--gold); font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
+  padding:6px 14px; border-radius:100px; margin-bottom:14px; font-weight:700;
+}
+.offer-banner-text h2{color:#fff; font-size:clamp(24px,2.8vw,34px); margin-bottom:10px; line-height:1.15;}
+.offer-banner-text h2 span{color:var(--gold);}
+.offer-banner-text p{color:rgba(255,255,255,.68); font-size:15.5px; max-width:520px;}
+.offer-banner-cta{display:flex; flex-direction:column; align-items:flex-end; gap:10px; flex-shrink:0;}
+.offer-banner-cta .price-tag{color:#fff; text-align:right;}
+.offer-banner-cta .price-tag b{display:block; font-family:'IBM Plex Mono',monospace; font-size:30px; color:var(--gold); line-height:1;}
+.offer-banner-cta .price-tag span{font-size:12px; color:rgba(255,255,255,.6); text-transform:uppercase; letter-spacing:.06em;}
+@media(max-width:980px){
+  .offer-banner-grid{grid-template-columns:1fr; text-align:center;}
+  .offer-banner-media{margin:0 auto;}
+  .offer-banner-text p{margin:0 auto;}
+  .offer-banner-cta{align-items:center;}
+  .offer-banner-cta .price-tag{text-align:center;}
 }
 
 /* ============ ARCH DIVIDER (signature motif) ============ */
@@ -584,6 +666,14 @@ footer .footer-logo-group .est-line{
 </head>
 <body>
 
+<div id="promoRibbon">
+<div class="wrap">
+<p>🎁 Limited-Time Offer: <b>Dental Implant + Crown @ ₹25,000</b> — all-inclusive, no hidden fees.</p>
+<a class="ribbon-link" href="offers/index.html">View Offer Details <i class="fas fa-arrow-right"></i></a>
+<button class="ribbon-close" id="ribbonClose" aria-label="Dismiss offer banner"><i class="fas fa-xmark"></i></button>
+</div>
+</div>
+
 <header>
 <nav class="navbar">
 <a href="#home" class="logo-mark">
@@ -603,6 +693,7 @@ footer .footer-logo-group .est-line{
 <li><a href="#team">Doctors</a></li>
 <li><a href="#gallery">Gallery</a></li>
 <li><a href="#faq">FAQ</a></li>
+<li><a href="offers/index.html" class="nav-offer"><i class="fas fa-gift"></i> Offers</a></li>
 <li><a href="#contact" class="nav-cta">Book Visit</a></li>
 </ul>
 <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -648,6 +739,25 @@ footer .footer-logo-group .est-line{
 </div>
 </div>
 <div class="scroll-cue">SCROLL<div class="line"></div></div>
+</section>
+
+<section id="offer-banner">
+<div class="offer-banner-inner">
+<div class="wrap offer-banner-grid">
+<div class="offer-banner-media reveal">
+<img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=300&q=80" alt="Dental implant treatment at Shine Dental Clinic">
+</div>
+<div class="offer-banner-text reveal">
+<span class="tag"><i class="fas fa-bolt"></i> Limited-Time Offer</span>
+<h2>Missing a tooth? Get it replaced with an <span>Implant + Crown at ₹25,000</span></h2>
+<p>Complete single-tooth replacement with a USFDA/CE approved implant and a custom permanent crown — transparent pricing, no hidden fees, at our Alkapuri, Kothapet branch.</p>
+</div>
+<div class="offer-banner-cta reveal">
+<div class="price-tag"><b>₹25,000</b><span>Complete tooth · All-inclusive</span></div>
+<a href="offers/index.html" class="btn btn-primary">View Offer &amp; Book <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
 </section>
 
 <div class="arch-divider" id="ad1"><svg viewBox="0 0 220 44"><path d="M6 6C6 30 60 40 110 40S214 30 214 6"/><circle cx="6" cy="6" r="4"/><circle cx="214" cy="6" r="4"/></svg></div>
@@ -1185,6 +1295,7 @@ Open all 7 days: 10:00 AM – 9:00 PM
 <li><a href="#technology">Technology</a></li>
 <li><a href="#team">Our Doctors</a></li>
 <li><a href="#gallery">Gallery</a></li>
+<li><a href="offers/index.html">Current Offers</a></li>
 <li><a href="#local-seo">Areas We Serve</a></li>
 <li><a href="#faq">FAQ</a></li>
 </ul>
@@ -1235,7 +1346,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if(targetId.length > 1 && document.querySelector(targetId)){
       e.preventDefault();
       document.querySelector(targetId).scrollIntoView({behavior:'smooth'});
-      if(window.innerWidth <= 1080 && this.closest('.nav-links')){ toggleMenu(); }
+      if(window.innerWidth <= 1250 && this.closest('.nav-links')){ toggleMenu(); }
     }
   });
 });
@@ -1253,6 +1364,31 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   const text = `Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0ABranch: ${encodeURIComponent(branch)}%0APreferred Date: ${encodeURIComponent(date)}%0AMessage: ${encodeURIComponent(message)}`;
   window.open(`https://wa.me/919908655335?text=${text}`);
 });
+
+/* ===== Fixed header + promo ribbon height sync (prevents any overlap/UI glitches) ===== */
+function syncHeaderOffset(){
+  const ribbon = document.getElementById('promoRibbon');
+  const header = document.querySelector('header');
+  const home = document.getElementById('home');
+  const ribbonH = ribbon && !ribbon.classList.contains('hidden') ? ribbon.offsetHeight : 0;
+  header.style.top = ribbonH + 'px';
+  const headerH = header.offsetHeight;
+  home.style.paddingTop = (ribbonH + headerH + 40) + 'px';
+}
+const ribbonEl = document.getElementById('promoRibbon');
+const ribbonCloseBtn = document.getElementById('ribbonClose');
+if(sessionStorage.getItem('shineOfferRibbonDismissed') === '1'){
+  ribbonEl.classList.add('hidden');
+}
+ribbonCloseBtn.addEventListener('click', () => {
+  ribbonEl.classList.add('hidden');
+  sessionStorage.setItem('shineOfferRibbonDismissed', '1');
+  setTimeout(syncHeaderOffset, 460);
+});
+window.addEventListener('load', syncHeaderOffset);
+window.addEventListener('resize', syncHeaderOffset);
+setTimeout(syncHeaderOffset, 50);
+
 window.addEventListener('scroll', () => {
   document.querySelector('.back-to-top').classList.toggle('visible', window.scrollY > 500);
   document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
